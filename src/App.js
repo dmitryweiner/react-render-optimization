@@ -1,7 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
+import List from './components/List';
+import PureList from './components/PureList';
 
-const MAX_ITEMS = 10000;
+const MAX_ITEMS = 10;
 
 function App() {
     const arr = [];
@@ -24,25 +26,20 @@ function App() {
             <button onClick={changeRandomItem}>Change random item</button>
             <div className="columns-wrapper">
                 <div className="column">
+                    <h3>List without components</h3>
                     <ul>
                         {list.map(item => (
-                            <li>{item.id}</li>
+                            <li key={item.id}>{item.id}</li>
                         ))}
                     </ul>
                 </div>
                 <div className="column">
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                    </ul>
+                    <h3>List with React.Component</h3>
+                    <List list={list} />
                 </div>
                 <div className="column">
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                    </ul>
+                    <h3>List with React.PureComponent</h3>
+                    <PureList list={list} />
                 </div>
             </div>
         </div>
